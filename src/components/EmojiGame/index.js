@@ -28,9 +28,14 @@ class EmojiGame extends Component {
   }
 
   playAgainGame = () => {
-    const {scoresList, score} = this.state
-    const topScore = Math.max(...scoresList, score)
-    this.setState({showWinOrLoseCard: false, score: 0, topScore})
+    const {score, topScore} = this.state
+    const newTopScore = Math.max(topScore, score)
+    this.setState({
+      showWinOrLoseCard: false,
+      score: 0,
+      topScore: newTopScore,
+      clickedEmojisList: [],
+    })
   }
 
   shuffledEmojisList = () => {
@@ -49,36 +54,64 @@ class EmojiGame extends Component {
     })
   }
 
+  //   clickEmoji = id => {
+  //     const newScore = 0
+  //     const {emojisList} = this.props
+  //     const {clickedEmojisList} = this.state
+
+  //     const isEmojiPresent = clickedEmojisList.includes(id)
+  //     const clickedEmojisLength = clickedEmojisList.length
+  //     if (isEmojiPresent) {
+  //       this.setState({
+  //         showWinOrLoseCard: true,
+  //         score: newScore,
+  //         clickedEmojisList: [], // Reset the score to 0 when a loss occurs
+  //       })
+  //       this.finishGameAndSetTopScore(clickedEmojisLength)
+  //     } else {
+  //       if (emojisList.length - 1 === clickedEmojisLength) {
+  //         this.setState({showWinOrLoseCard: true})
+  //         this.finishGameAndSetTopScore(emojisList.length)
+  //       }
+  //       this.setState(previousState => ({
+  //         clickedEmojisList: [...previousState.clickedEmojisList, id],
+  //         emojisList: this.shuffledEmojisList(),
+  //         score: previousState.score + 1,
+  //       }))
+  //     }
+  //   }
+
   clickEmoji = id => {
-    const newScore = 0
     const {emojisList} = this.props
     const {clickedEmojisList} = this.state
 
     const isEmojiPresent = clickedEmojisList.includes(id)
-    const clickedEmojisLength = clickedEmojisList.length
+
     if (isEmojiPresent) {
       this.setState({
         showWinOrLoseCard: true,
-        score: newScore,
-        clickedEmojisList: [], // Reset the score to 0 when a loss occurs
+        clickedEmojisList: [],
       })
-      this.finishGameAndSetTopScore(clickedEmojisLength)
+      this.finishGameAndSetTopScore(clickedEmojisList.length)
     } else {
-      if (emojisList.length - 1 === clickedEmojisLength) {
+      const updatedClickedEmojisList = [...clickedEmojisList, id]
+
+      if (emojisList.length === updatedClickedEmojisList.length) {
         this.setState({showWinOrLoseCard: true})
-        this.finishGameAndSetTopScore(emojisList.length)
+        this.finishGameAndSetTopScore(updatedClickedEmojisList.length)
+      } else {
+        this.setState(prevState => ({
+          clickedEmojisList: updatedClickedEmojisList,
+          emojisList: this.shuffledEmojisList(),
+          score: prevState.score + 1,
+        }))
       }
-      this.setState(previousState => ({
-        clickedEmojisList: [...previousState.clickedEmojisList, id],
-        emojisList: this.shuffledEmojisList(),
-        score: previousState.score + 1,
-      }))
     }
   }
 
   render() {
     const {emojisList} = this.props
-    const {score, topScore, showWinOrLoseCard} = this.state
+    const {score, topScore, showWinOrLoseCard, hasLost} = this.state
     return (
       <div className="bg-container">
         {/* <NavBar score={score} topScore={topScore} />

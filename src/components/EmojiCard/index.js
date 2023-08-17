@@ -6,7 +6,7 @@ const EmojiCard = props => {
   const {emojiUrl, emojiName, id} = emojiDetails
 
   const onClickEmojiCard = () => {
-    console.log(id)
+    console.log(emojiName)
     clickEmoji(id)
   }
 
