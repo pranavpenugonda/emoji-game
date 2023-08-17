@@ -1,0 +1,68 @@
+/* Write your code here. */
+.result-card {
+  border-radius: 8px;
+  background-image: inear-gradient(to right, #9796f0, #fbc7d4);
+  padding: 20px;
+  display: flex;
+  border: 2px solid #ffffff;
+  width: 500px;
+}
+
+@media screen and (max-width: 765px) {
+  .result-card {
+    border-radius: 8px;
+    background-image: inear-gradient(to right, #9796f0, #fbc7d4);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ffffff;
+    width: 500px;
+  }
+  .won-game-img {
+    height: 220px;
+    width: 180px;
+    margin-bottom: 20px;
+    order: -1;
+  }
+}
+.result-card-sub-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.won-txt {
+  font-family: 'Roboto';
+  font-size: 25px;
+  color: #ffffff;
+}
+
+.best-score-txt {
+  font-family: 'Roboto';
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.score-txt {
+  font-family: 'Roboto';
+  font-size: 18px;
+  color: #6a59ff;
+}
+
+.play-again-btn {
+  background-color: #ffce27;
+  padding: 5px;
+  outline: none;
+  cursor: pointer;
+  color: black;
+  font-family: 'Roboto';
+  width: 118px;
+  border: 0px;
+}
+
+.won-game-img {
+  height: 350px;
+  width: 300px;
+  margin-left: 20px;
+}

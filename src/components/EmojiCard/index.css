@@ -1,0 +1,47 @@
+/* Write your code here. */
+.emoji-img {
+  height: 80px;
+  width: 80px;
+}
+
+.emoji-list-card {
+  border: 1px solid #ffffff30;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 12px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  width: 20%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+@media screen and (max-width: 765px) {
+  .emoji-list-card {
+    border: 1px solid #ffffff30;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 12px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    width: 30%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .emoji-img {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.list-item-btn {
+  outline: none;
+  border: 0px;
+  background-color: transparent;
+  cursor: pointer;
+}
